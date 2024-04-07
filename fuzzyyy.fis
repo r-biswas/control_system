@@ -1,0 +1,47 @@
+[System]
+Name='fuzzyyy'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=9
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='accleleration'
+Range=[0 1]
+NumMFs=3
+MF1='LOW':'gaussmf',[0.1769 -1.388e-17]
+MF2='MED':'gaussmf',[0.1769 0.5]
+MF3='HIGH':'gaussmf',[0.1769 1]
+
+[Input2]
+Name='mic'
+Range=[0 35000]
+NumMFs=3
+MF1='LOW':'gbellmf',[7292 2.5 -4.547e-13]
+MF2='MED':'gbellmf',[7292 2.5 17500]
+MF3='HIGH':'gbellmf',[7292 2.5 35000]
+
+[Output1]
+Name='DANGER_Level'
+Range=[0 10]
+NumMFs=3
+MF1='LOW':'trimf',[-4.16666666666667 0 4.16666666666667]
+MF2='MED':'trimf',[0.833333333333333 5 9.16666666666667]
+MF3='HIGH':'trimf',[5.83333333333333 10 14.1666666666667]
+
+[Rules]
+1 1, 1 (1) : 1
+2 1, 2 (1) : 1
+3 1, 3 (1) : 1
+1 2, 2 (1) : 1
+2 2, 2 (1) : 1
+3 2, 3 (1) : 1
+1 3, 1 (1) : 1
+2 3, 2 (1) : 1
+3 3, 3 (1) : 1
